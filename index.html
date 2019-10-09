@@ -26,6 +26,7 @@
             //var myNumbers = [6, 5, 3, 1, 8, 7];
             var myNumbers = [];
             var lottoNums = [6, 5, 3, 1, 8, 7]; // test true values
+            var arrMatch=true 
             myNumbers.push(document.getElementById('txtU1').value); //add each user number to the array
             myNumbers.push(document.getElementById('txtU2').value);
             myNumbers.push(document.getElementById('txtU3').value);
@@ -33,12 +34,18 @@
             myNumbers.push(document.getElementById('txtU5').value);
             myNumbers.push(document.getElementById('txtU6').value);
             //lottoNums = [7, 9, 13, 11, 28, 17]; //test false values
-            document.getElementById('txtArrayList').value = lottoNums + "\n" + myNumbers;
-            if (JSON.stringify(myNumbers) == JSON.stringify(lottoNums)) {
-                document.getElementById('txtMatchMsg').value = "You win"
+            document.getElementById('txtArrayList').value = "Your numbers are: " +
+                myNumbers + "\n" + "Computer numbers are: " + lottoNums;
+            for (i = 1; len = myNumbers.length, i<len; i++) {
+                if (parseInt(myNumbers[i],10) !== lottoNums[i]) {
+                    //if (myNumbers[i] == lottoNums[i]) {
+                    arrMatch = false;
+                }
             }
-            else {
-                document.getElementById('txtMatchMsg').value = "You didn't win"
+            if (arrMatch == true) {
+                document.getElementById('txtMatchMsg').value = "You win!";
+            } else {
+                document.getElementById('txtMatchMsg').value = "You didn't win!";
             }
         }
     </script>
