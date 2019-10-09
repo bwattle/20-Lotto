@@ -1,0 +1,92 @@
+﻿<!--  Add some general comments -->
+<!--  date, author and changes are good here -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lotto scenario</title>
+    <style type="text/css">
+        /* CSS in the same file initially because it's minimal */
+
+        /* minimal css for table cell format */
+        .gameboard {
+            width: 40px;
+            height: 23px;
+            font-size: 20px;
+            color: #0B1AB8;
+            vertical-align: middle;
+            text-align: center;
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #ED2428;
+        }
+    </style>
+    <script type='text/javascript'>  
+        function btnLottoDraw() {
+            //var myNumbers = [6, 5, 3, 1, 8, 7];
+            var myNumbers = [];
+            var lottoNums = [6, 5, 3, 1, 8, 7]; // test true values
+            myNumbers.push(document.getElementById('txtU1').value); //add each user number to the array
+            myNumbers.push(document.getElementById('txtU2').value);
+            myNumbers.push(document.getElementById('txtU3').value);
+            myNumbers.push(document.getElementById('txtU4').value);
+            myNumbers.push(document.getElementById('txtU5').value);
+            myNumbers.push(document.getElementById('txtU6').value);
+            //lottoNums = [7, 9, 13, 11, 28, 17]; //test false values
+            document.getElementById('txtArrayList').value = lottoNums + "\n" + myNumbers;
+            if (JSON.stringify(myNumbers) == JSON.stringify(lottoNums)) {
+                document.getElementById('txtMatchMsg').value = "You win"
+            }
+            else {
+                document.getElementById('txtMatchMsg').value = "You didn't win"
+            }
+        }
+    </script>
+</head>
+<body>
+    <!--Parameter for initial load can be changed manually-->
+    <!--3/8/19 "LoadGrid()" now changed to 2 nested loops -->
+    <form id="input">
+        <h1>Try out your favourite LOTTO numbers</h1>
+        <h2>Enter numbers between 1 and 40</h2>
+        <p>(Default values are for testing)</p>
+        <table class="gameboard">
+            <!--  Board cell format is controlled the css above  -->
+            <tr>
+                <td>1st</td>
+                <td>2nd</td>
+                <td>3rd</td>
+                <td>4th</td>
+                <td>5th</td>
+                <td>6th</td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="txtU1" type="text" class="gameboard" value="6" /></td>
+                <td>
+                    <input id="txtU2" type="text" class="gameboard" value="5" /></td>
+                <td>
+                    <input id="txtU3" type="text" class="gameboard" value="3" /></td>
+                <td>
+                    <input id="txtU4" type="text" class="gameboard" value="1" /></td>
+                <td>
+                    <input id="txtU5" type="text" class="gameboard" value="8" /></td>
+                <td>
+                    <input id="txtU6" type="text" class="gameboard" value="7" /></td>
+            </tr>
+        </table>
+        <br />
+        <input type="button" value="------        Check the LOTTO draw        ------" onclick="btnLottoDraw()" />
+        <br />
+        <br />
+        View the number of complete columns:<br />
+        <textarea id="txtMatchMsg" cols="35" rows="1" name="S1"></textarea>
+        <br />
+        <br />
+        View of the original 2D array:<br />
+        <textarea id="txtArrayList" cols="35" rows="10"></textarea><br />
+        <br />
+        <br />
+    </form>
+</body>
+</html>
