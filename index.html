@@ -25,8 +25,9 @@
         function btnLottoDraw() {
             //var myNumbers = [6, 5, 3, 1, 8, 7];
             var myNumbers = [];
-            var lottoNums = [6, 5, 3, 1, 8, 7]; // test true values
-            var arrMatch=true 
+            //var lottoNums = [6, 5, 3, 1, 8, 7]; // test true values
+            var lottoNums = [];
+            var arrMatch = true
             myNumbers.push(document.getElementById('txtU1').value); //add each user number to the array
             myNumbers.push(document.getElementById('txtU2').value);
             myNumbers.push(document.getElementById('txtU3').value);
@@ -34,10 +35,16 @@
             myNumbers.push(document.getElementById('txtU5').value);
             myNumbers.push(document.getElementById('txtU6').value);
             //lottoNums = [7, 9, 13, 11, 28, 17]; //test false values
+            lottoNums.push(Math.floor((Math.random() * 40) + 1));
+            lottoNums.push(Math.floor((Math.random() * 40) + 1));
+            lottoNums.push(Math.floor((Math.random() * 40) + 1));
+            lottoNums.push(Math.floor((Math.random() * 40) + 1));
+            lottoNums.push(Math.floor((Math.random() * 40) + 1));
+            lottoNums.push(Math.floor((Math.random() * 40) + 1));
             document.getElementById('txtArrayList').value = "Your numbers are: " +
                 myNumbers + "\n" + "Computer numbers are: " + lottoNums;
-            for (i = 1; len = myNumbers.length, i<len; i++) {
-                if (parseInt(myNumbers[i],10) !== lottoNums[i]) {
+            for (i = 1; len = myNumbers.length, i < len; i++) {
+                if (parseInt(myNumbers[i], 10) !== lottoNums[i]) {
                     //if (myNumbers[i] == lottoNums[i]) {
                     arrMatch = false;
                 }
