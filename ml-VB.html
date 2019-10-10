@@ -1,0 +1,682 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	}
+a:link
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;
+        }
+ p.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	}
+    </style>
+</head>
+<body>
+
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b><span style="font-size:24.0pt">Visual Basic - EBNF and Railroad<o:p></o:p></span></b></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <span style="font-size:11.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#242729"><o:p>&nbsp;</o:p></span></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b>Metalanguage description</b>s for the syntax <a href="onenote:..\..\SyllabusNotes\8.2-Development-Intro\8.2.2%20Solution%20Implementation.one#3%20If%20Statements%20in%203%20languages&amp;section-id={DD8D21CC-3B4A-4AB2-BFB2-DE6D7B5703A3}&amp;page-id={0E0C1548-50F5-4C8F-952A-60F5CFDC731B}&amp;end&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Syntax in 3 languages </a><o:p></o:p>
+    </p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        Definitions here: <a href="onenote:..\..\SyllabusNotes\8.2-Development-Intro\8.2.2%20Solution%20Implementation.one#EBNF%20%20Railroad&amp;section-id={DD8D21CC-3B4A-4AB2-BFB2-DE6D7B5703A3}&amp;page-id={B638DA19-A894-4178-8D30-D161F4C887FF}&amp;end&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">EBNF &amp; Railroad</a><o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        Syllabus definitions <a href="onenote:..\..\SyllabusNotes\SpecificationsDoc.one#PDF%20Specs%20Full&amp;section-id={92C227CA-1DCA-4847-8F6E-D6DBFE0820F1}&amp;page-id={A569A546-288B-4362-A5A1-64A0E39CAC6F}&amp;object-id={A9ABDD8F-1E2B-09D6-180F-D7E2BEC59213}&amp;6B&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Meta languages - EBNF:</a><span style="mso-spacerun:yes">&nbsp; </span><a href="onenote:..\..\SyllabusNotes\SpecificationsDoc.one#PDF%20Specs%20Full&amp;section-id={92C227CA-1DCA-4847-8F6E-D6DBFE0820F1}&amp;page-id={A569A546-288B-4362-A5A1-64A0E39CAC6F}&amp;object-id={A9ABDD8F-1E2B-09D6-180F-D7E2BEC59213}&amp;6F&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Railroad diagrams:</a><o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        See also: <a href="onenote:..\_Content%20Library\Code\Tardiani\06Calculations.one#Initial%20Planning%20steps&amp;section-id={334CCC13-6611-4AB9-BFBB-6726DC20DC62}&amp;page-id={FA69800C-4CAE-4A6F-8179-87CD9BABAD90}&amp;object-id={C02D93BB-0EE3-48D9-B458-52642EFC4493}&amp;17&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook">Declaring variables</a><o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b>EBNF</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b>Definitions:</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        Digit = 0|1|2|3|4|5|6|7|8|9<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        Character = a|b|c|d|e|f|g|h|i|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Special character&nbsp;(including &quot;space&quot;)<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">space +&nbsp;-&nbsp;*&nbsp;/&nbsp;=&nbsp;&lt;&nbsp;&gt;&nbsp;[&nbsp;]&nbsp;.&nbsp;,&nbsp;(&nbsp;)&nbsp;:&nbsp;^&nbsp;@&nbsp;{&nbsp;}&nbsp;$&nbsp;#&nbsp;&amp;&nbsp;%<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        Identifier = Character { Character | Digit }<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:red">(Identifiers are Variable names)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">String = Character { Special character | Character | Digit } <o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Declaration of variables: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter" xmlns:v="urn:schemas-microsoft-com:vml"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @0 1 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum 0 0 @1" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @2 1 2" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @3 21600 pixelWidth" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @3 21600 pixelHeight" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @0 0 1" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @6 1 2" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @7 21600 pixelWidth" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @8 21600 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @7 21600 pixelHeight" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @10 21600 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect" xmlns:v="urn:schemas-microsoft-com:vml"/>
+ <o:lock v:ext="edit" aspectratio="t" xmlns:o="urn:schemas-microsoft-com:office:office"/>
+</v:shapetype><v:shape id="Picture_x0020_59" o:spid="_x0000_i1044" type="#_x0000_t75"
+ alt="Machine generated alternative text:&#10;CustomEventMemberDeclaration &#10;Attributes? EventModifiers* Identifier TypeName ImplementsCIause? StatementTerminator EventAccessorDecIaration+ &#10;StatementTer minator &#10;(used in EventMemberDec/aration) &#10;oxOOA&gt; &#10;Del g &#10;Never empty &#10;MayStartWith: &#10;MayaeFoIIowedBy: public &#10;Oxooo&gt; &#10;Oxon &#10;oxaoaE&gt; &#10;oxaoagy &lt; &#10;-caly "
+ style='width:397.5pt;height:126.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image001.png"
+  o:title=" public &#10;Oxooo&gt; &#10;Oxon &#10;oxaoaE&gt; &#10;oxaoagy &lt; &#10;-caly " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+CustomEventMemberDeclaration 
+Attributes? EventModifiers* Identifier TypeName ImplementsCIause? StatementTerminator EventAccessorDecIaration+ 
+StatementTer minator 
+(used in EventMemberDec/aration) 
+oxOOA&gt; 
+Del g 
+Never empty 
+MayStartWith: 
+MayaeFoIIowedBy: public 
+Oxooo&gt; 
+Oxon 
+oxaoaE&gt; 
+oxaoagy &lt; 
+-caly " border="0" height="169" src="ml-VB/clip_image002.jpg" v:shapes="Picture_x0020_59" width="530" /><![endif]></span><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">Grammar vb10</span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959"><a href="https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/01/12/06/7120.vb10.html">https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/01/12/06/7120.vb10.html</a></span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">Screen clipping taken: 11/10/2018 10:00 AM</span></cite><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        DimStatement = &lt;AccessModifier&gt; &lt;Identifier&gt; As &lt;DataType&gt;<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{&lt;AccessModifier&gt; &lt;Identifier&gt; As &lt;DataType&gt;}<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_58" o:spid="_x0000_i1043" type="#_x0000_t75" alt="Machine generated alternative text:&#10;—pub &#10;lic Class &#10;Forml &#10;Dim Tot As Integer &#10;Dim Nol As Integer &#10;Dim N02 As Integer &#10;Din* N03 As Integer &#10;Ii Class &#10;Forml &#10;Private &#10;Private &#10;Private &#10;Private &#10;Tot &#10;No I &#10;No 2 &#10;No 3 &#10;As &#10;As &#10;As &#10;As &#10;Integer &#10;Integer &#10;Integer &#10;Integer "
+ style='width:316.5pt;height:72.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image003.png"
+  o:title="&#10;—pub &#10;lic Class &#10;Forml &#10;Dim Tot As Integer &#10;Dim Nol As Integer &#10;Dim N02 As Integer &#10;Din* N03 As Integer &#10;Ii Class &#10;Forml &#10;Private &#10;Private &#10;Private &#10;Private &#10;Tot &#10;No I &#10;No 2 &#10;No 3 &#10;As &#10;As &#10;As &#10;As &#10;Integer &#10;Integer &#10;Integer &#10;Integer " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+—pub 
+lic Class 
+Forml 
+Dim Tot As Integer 
+Dim Nol As Integer 
+Dim N02 As Integer 
+Din* N03 As Integer 
+Ii Class 
+Forml 
+Private 
+Private 
+Private 
+Private 
+Tot 
+No I 
+No 2 
+No 3 
+As 
+As 
+As 
+As 
+Integer 
+Integer 
+Integer 
+Integer " border="0" height="97" src="ml-VB/clip_image003.png" v:shapes="Picture_x0020_58" width="422" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Concatenation: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">String = Character { Special character | Character | Digit } <o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Text block = </span><b><span style="color:red">&quot;</span></b><span style="color:#7030A0"> &lt;string&gt; </span><b><span style="color:red">&quot;</span></b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Final statement =<span style="mso-spacerun:yes">&nbsp; </span>[&lt;Text block&gt; ]<span style="mso-spacerun:yes">&nbsp; </span>[</span><b><span style="color:red">&amp;</span></b><span style="color:#7030A0"> {&lt;identifier&gt; | &lt;Text block&gt;}]</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_57" o:spid="_x0000_i1042" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:396.75pt;height:15.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image004.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="21" src="ml-VB/clip_image004.png" v:shapes="Picture_x0020_57" width="529" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Message (print to screen) statements: </span></b><span style="font-size:11.0pt;
+color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        Text block = <b>&quot;</b> &lt;string&gt; <b>&quot;</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt">Message Box = </span><span style="color:#C00000">MsgBox</span></b><span style="color:#C00000">(</span> [&lt;Text block&gt; ]<span style="mso-spacerun:yes">&nbsp; </span>[<b>&amp;</b> {&lt;identifier&gt; | &lt;Text block&gt;}] <span style="color:#C00000">)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_56" o:spid="_x0000_i1041" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:231.75pt;height:18pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image005.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="24" src="ml-VB/clip_image005.png" v:shapes="Picture_x0020_56" width="309" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Assignment:</span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;identifier&gt; </span><b><span style="font-family:&quot;Courier New&quot;;color:red">=</span></b><span style="color:
+red"><span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; {&lt;Text block&gt; | &lt;identifier&gt;}] </span><span style="font-family:&quot;Courier New&quot;;color:red">;</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:red">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_55" o:spid="_x0000_i1040" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:316.5pt;height:24.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image006.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="33" src="ml-VB/clip_image006.png" v:shapes="Picture_x0020_55" width="422" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Condition </span></b><span style="color:#7030A0">(evaluates to </span><span style="color:red">true</span><span style="color:#7030A0"> or </span><span style="color:red">false</span><span style="color:#7030A0">)<b>: </b></span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;identifier&gt; </span><b><span style="color:red">==|===|&lt;|&gt; </span></b><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">And you could have:<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;condition&gt; =</span><span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;condition&gt; </span><b><span style="color:red">|| </span></b><span style="color:#7030A0">&lt;condition&gt; </span><span style="color:red">AND</span><span style="color:#7030A0"> &lt;condition&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">) </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:#7030A0">( </span><b><span style="color:red">||</span></b><span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;color:#7030A0"> means OR)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:red">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_54" o:spid="_x0000_i1039" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:343.5pt;height:14.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image007.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="19" src="ml-VB/clip_image007.png" v:shapes="Picture_x0020_54" width="458" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Statement - </span></b><span style="color:#7030A0">block of code to be executed<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_53" o:spid="_x0000_i1038" type="#_x0000_t75" alt="Machine generated alternative text:&#10;e ßlNT "
+ style='width:220.5pt;height:82.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image008.png"
+  o:title="&#10;e ßlNT " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+e ßlNT " border="0" height="110" src="ml-VB/clip_image009.jpg" v:shapes="Picture_x0020_53" width="294" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color: #7030A0; background: yellow; mso-highlight: yellow">&quot;IF&quot; statement:<span style="mso-spacerun:yes">&nbsp; </span></span></b><span style="color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b>Railroad:</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b>Definitions:</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_52" o:spid="_x0000_i1037" type="#_x0000_t75" alt="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「 &#10;く P 「 い C95 代 &#10;′ ・ つ 物 当 っ ー 物 ・ つ ・ J &#10;ノ つ テ つ ′ つ &#10;X 9 ョ ョ 0 つ 日 &gt; &#10;4 ! 6 ℃ "
+ style='width:336pt;height:576.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image010.png"
+  o:title="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「 &#10;く P 「 い C95 代 &#10;′ ・ つ 物 当 っ ー 物 ・ つ ・ J &#10;ノ つ テ つ ′ つ &#10;X 9 ョ ョ 0 つ 日 &gt; &#10;4 ! 6 ℃ " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「 
+く P 「 い C95 代 
+′ ・ つ 物 当 っ ー 物 ・ つ ・ J 
+ノ つ テ つ ′ つ 
+X 9 ョ ョ 0 つ 日 &gt; 
+4 ! 6 ℃ " border="0" height="769" src="ml-VB/clip_image010.png" v:shapes="Picture_x0020_52" width="448" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">String:</span></b><span style="color:#7030A0"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_51" o:spid="_x0000_i1036" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:252.75pt;height:54pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image011.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="72" src="ml-VB/clip_image011.png" v:shapes="Picture_x0020_51" width="337" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Identifier</span></b><span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:red">(Identifiers are Variable names)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_50" o:spid="_x0000_i1035" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;letter &#10;letter &#10;( digit "
+ style='width:377.25pt;height:74.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image012.png"
+  o:title="&#10;&#10;letter &#10;letter &#10;( digit " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+letter 
+letter 
+( digit " border="0" height="99" src="ml-VB/clip_image013.jpg" v:shapes="Picture_x0020_50" width="503" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Declaration of variables: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        Data types:<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_49" o:spid="_x0000_i1034" type="#_x0000_t75" alt="Machine generated alternative text:&#10;Tre "
+ style='width:212.25pt;height:264.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image014.png"
+  o:title="&#10;Tre " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+Tre " border="0" height="353" src="ml-VB/clip_image014.png" v:shapes="Picture_x0020_49" width="283" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        DimStatement=<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_48" o:spid="_x0000_i1033" type="#_x0000_t75" alt="Machine generated alternative text:&#10;Cie "
+ style='width:400.5pt;height:86.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image015.png"
+  o:title="&#10;Cie " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+Cie " border="0" height="115" src="ml-VB/clip_image016.jpg" v:shapes="Picture_x0020_48" width="534" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_47" o:spid="_x0000_i1032" type="#_x0000_t75" alt="Machine generated alternative text:&#10;—pub &#10;lic Class &#10;Forml &#10;Dim Tot As Integer &#10;Dim Nol As Integer &#10;Dim N02 As Integer &#10;Din* N03 As Integer &#10;Ii Class &#10;Forml &#10;Private &#10;Private &#10;Private &#10;Private &#10;Tot &#10;No I &#10;No 2 &#10;No 3 &#10;As &#10;As &#10;As &#10;As &#10;Integer &#10;Integer &#10;Integer &#10;Integer "
+ style='width:316.5pt;height:72.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image003.png"
+  o:title="&#10;—pub &#10;lic Class &#10;Forml &#10;Dim Tot As Integer &#10;Dim Nol As Integer &#10;Dim N02 As Integer &#10;Din* N03 As Integer &#10;Ii Class &#10;Forml &#10;Private &#10;Private &#10;Private &#10;Private &#10;Tot &#10;No I &#10;No 2 &#10;No 3 &#10;As &#10;As &#10;As &#10;As &#10;Integer &#10;Integer &#10;Integer &#10;Integer " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+—pub 
+lic Class 
+Forml 
+Dim Tot As Integer 
+Dim Nol As Integer 
+Dim N02 As Integer 
+Din* N03 As Integer 
+Ii Class 
+Forml 
+Private 
+Private 
+Private 
+Private 
+Tot 
+No I 
+No 2 
+No 3 
+As 
+As 
+As 
+As 
+Integer 
+Integer 
+Integer 
+Integer " border="0" height="97" src="ml-VB/clip_image003.png" v:shapes="Picture_x0020_47" width="422" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">Or<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        DimStatement = <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_46" o:spid="_x0000_i1031" type="#_x0000_t75" alt="Machine generated alternative text:&#10;def &#10;cees$ &#10;Type "
+ style='width:402.75pt;height:81pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image017.png"
+  o:title="&#10;def &#10;cees$ &#10;Type " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+def 
+cees$ 
+Type " border="0" height="108" src="ml-VB/clip_image018.jpg" v:shapes="Picture_x0020_46" width="537" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_45" o:spid="_x0000_i1030" type="#_x0000_t75" alt="Machine generated alternative text:&#10;public Class Forml &#10;Private Tot, TotP, Mol, N02, N03 As Integer &#10;private StrSu• AS String "
+ style='width:242.25pt;height:39.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image019.png"
+  o:title="&#10;public Class Forml &#10;Private Tot, TotP, Mol, N02, N03 As Integer &#10;private StrSu• AS String " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+public Class Forml 
+Private Tot, TotP, Mol, N02, N03 As Integer 
+private StrSu• AS String " border="0" height="53" src="ml-VB/clip_image019.png" v:shapes="Picture_x0020_45" width="323" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Concatenation: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_44" o:spid="_x0000_i1029" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:364.5pt;height:162pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image020.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="216" src="ml-VB/clip_image020.png" v:shapes="Picture_x0020_44" width="486" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Message (print to screen) statements: </span></b><span style="font-size:11.0pt;
+color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_43" o:spid="_x0000_i1028" type="#_x0000_t75" alt="Machine generated alternative text:&#10;4 "
+ style='width:404.25pt;height:46.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image021.png"
+  o:title="&#10;4 " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+4 " border="0" height="62" src="ml-VB/clip_image022.jpg" v:shapes="Picture_x0020_43" width="539" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_42" o:spid="_x0000_i1027" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:400.5pt;height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image023.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-VB/clip_image023.png" v:shapes="Picture_x0020_42" width="534" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Assignment:</span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Condition </span></b><span style="color:#7030A0">(evaluates to </span><span style="color:red">true</span><span style="color:#7030A0"> or </span><span style="color:red">false</span><span style="color:#7030A0">)<b>: </b></span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;identifier&gt; </span><b><span style="color:red">==|===|&lt;|&gt; </span></b><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">And you could have:<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;condition&gt; =</span><span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;condition&gt; </span><b><span style="color:red">|| </span></b><span style="color:#7030A0">&lt;condition&gt; </span><span style="color:red">AND</span><span style="color:#7030A0"> &lt;condition&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">) </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:#7030A0">( </span><b><span style="color:red">||</span></b><span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;color:#7030A0"> means OR)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:red">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_41" o:spid="_x0000_i1026" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:343.5pt;height:14.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image007.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="19" src="ml-VB/clip_image007.png" v:shapes="Picture_x0020_41" width="458" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Statement - </span></b><span style="color:#7030A0">block of code to be executed<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_40" o:spid="_x0000_i1025" type="#_x0000_t75" alt="Machine generated alternative text:&#10;e ßlNT "
+ style='width:220.5pt;height:82.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-VB/clip_image008.png"
+  o:title="&#10;e ßlNT " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+e ßlNT " border="0" height="110" src="ml-VB/clip_image024.jpg" v:shapes="Picture_x0020_40" width="294" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color: #7030A0; background: yellow; mso-highlight: yellow">&quot;IF&quot; statement:<span style="mso-spacerun:yes">&nbsp; </span></span></b><span style="color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <span style="font-size:11.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#242729">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p class="MsoNormal">
+        <o:p>&nbsp;</o:p></p>
+
+</body>
+</html>

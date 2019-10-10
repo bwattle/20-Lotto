@@ -1,0 +1,823 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	}
+a:link
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;
+        }
+ p.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	}
+    </style>
+</head>
+<body>
+
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b><span style="font-size:24.0pt">JavaScript - EBNF and Railroad<o:p></o:p></span></b></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <span style="font-size:11.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#242729"><o:p>&nbsp;</o:p></span></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b>Metalanguage description</b>s for the syntax <a href="onenote:..\..\SyllabusNotes\8.2-Development-Intro\8.2.2%20Solution%20Implementation.one#3%20If%20Statements%20in%203%20languages&amp;section-id={DD8D21CC-3B4A-4AB2-BFB2-DE6D7B5703A3}&amp;page-id={0E0C1548-50F5-4C8F-952A-60F5CFDC731B}&amp;end&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Syntax in 3 languages </a><o:p></o:p>
+    </p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        Definitions here: <a href="onenote:..\..\SyllabusNotes\8.2-Development-Intro\8.2.2%20Solution%20Implementation.one#EBNF%20%20Railroad&amp;section-id={DD8D21CC-3B4A-4AB2-BFB2-DE6D7B5703A3}&amp;page-id={B638DA19-A894-4178-8D30-D161F4C887FF}&amp;end&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">EBNF &amp; Railroad</a><o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        Syllabus definitions <a href="onenote:..\..\SyllabusNotes\SpecificationsDoc.one#PDF%20Specs%20Full&amp;section-id={92C227CA-1DCA-4847-8F6E-D6DBFE0820F1}&amp;page-id={A569A546-288B-4362-A5A1-64A0E39CAC6F}&amp;object-id={A9ABDD8F-1E2B-09D6-180F-D7E2BEC59213}&amp;6B&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Meta languages - EBNF:</a><span style="mso-spacerun:yes">&nbsp; </span><a href="onenote:..\..\SyllabusNotes\SpecificationsDoc.one#PDF%20Specs%20Full&amp;section-id={92C227CA-1DCA-4847-8F6E-D6DBFE0820F1}&amp;page-id={A569A546-288B-4362-A5A1-64A0E39CAC6F}&amp;object-id={A9ABDD8F-1E2B-09D6-180F-D7E2BEC59213}&amp;6F&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Railroad diagrams:</a><o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        See also: <a href="onenote:..\_Content%20Library\Code\Tardiani\06Calculations.one#Initial%20Planning%20steps&amp;section-id={334CCC13-6611-4AB9-BFBB-6726DC20DC62}&amp;page-id={FA69800C-4CAE-4A6F-8179-87CD9BABAD90}&amp;object-id={C02D93BB-0EE3-48D9-B458-52642EFC4493}&amp;17&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook">Declaring variables</a><o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b>EBNF</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b>JavaScript - definitions</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        sign <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &quot;+&quot; | &quot;-&quot; <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        letter <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &quot;A&quot; | &quot;B&quot; | &quot;C&quot; | &quot;D&quot; | &quot;E&quot; | &quot;F&quot; | &quot;G&quot; | &quot;H&quot; | &quot;I&quot; | &quot;J&quot; | &quot;K&quot; | &quot;L&quot; | &quot;M&quot; | &quot;N&quot; | &quot;O&quot; | &quot;P&quot; | &quot;Q&quot; | &quot;R&quot; | &quot;S&quot; | &quot;T&quot; | &quot;U&quot; | &quot;V&quot; | &quot;W&quot; | &quot;X&quot; | &quot;Y&quot; | &quot;Z&quot; | &quot;a&quot; | &quot;b&quot; | &quot;c&quot; | &quot;d&quot; | &quot;e&quot; | &quot;f&quot; | &quot;g&quot; | &quot;h&quot; | &quot;i&quot; | &quot;j&quot; | &quot;k&quot; | &quot;l&quot; | &quot;m&quot; | &quot;n&quot; | &quot;o&quot; | &quot;p&quot; | &quot;q&quot; | &quot;r&quot; | &quot;s&quot; | &quot;t&quot; | &quot;u&quot; | &quot;v&quot; | &quot;w&quot; | &quot;x&quot; | &quot;y&quot; | &quot;z&quot; <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        digit <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &quot;0&quot; | &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; | &quot;8&quot; | &quot;9&quot; <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        special character&nbsp;(including &quot;space&quot;)<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &quot; &quot; | &quot;*&quot; | &quot;/&quot; | &quot;=&quot; |&nbsp;&quot;&lt;&quot; |&nbsp;&quot;&gt;&quot; |&nbsp;&quot;[&quot; |&nbsp;&quot;]&quot; |&nbsp;&quot;.&quot; |&nbsp;&quot;,&quot; |&nbsp;&quot;(&quot;&nbsp;| &quot;)&quot; |&nbsp;&quot;:&quot; |&nbsp;&quot;^&quot; |&nbsp;&quot;@&quot;&nbsp;| &quot;{&quot;&nbsp;| &quot;}&quot; |&nbsp;&quot;$&quot; |&nbsp;&quot;#&quot; |&nbsp;&quot;&amp;&quot; |&nbsp;&quot;%&quot; <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        string-character <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        any character or digit except quote | &quot;&#39;&#39;&quot; <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        string <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &lt;string-character &gt; { &lt;string-character &gt; } <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Identifier</span></b><span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:red">(Identifiers are Variable names)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        letter { letter | digit<span style="mso-spacerun:yes">&nbsp; </span>} <o:p></o:p>
+    </p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Declaration of variables: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#C00000">integers</span><span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#00B050">float or real</span><span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#7030A0"><span style="mso-spacerun:yes">&nbsp;</span>string</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        DataType = <span style="color:#C00000">&lt;</span><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#C00000">Digit&gt; {</span><span style="color:#C00000">&lt;</span><span style="font-size:11.0pt;
+font-family:&quot;Calibri&quot;,sans-serif;color:#C00000">Digit&gt;} </span>| <span style="color:#00B050">&lt;</span><span style="font-size:11.0pt;font-family:
+&quot;Calibri&quot;,sans-serif;color:#00B050">Digit&gt; {</span><span style="color:#00B050">&lt;</span><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#00B050">Digit&gt;}</span><b><span style="color:#00B050">.</span></b><span style="color:#00B050">&lt;</span><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#00B050">Digit&gt; {</span><span style="color:#00B050">&lt;</span><span style="font-size:11.0pt;
+font-family:&quot;Calibri&quot;,sans-serif;color:#00B050">Digit&gt;} </span><span style="mso-spacerun:yes">&nbsp;</span>| <span style="color:#7030A0">&lt;</span><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#7030A0">Character&gt;<span style="mso-spacerun:yes">&nbsp; </span>{</span><span style="color:#7030A0">&lt;</span><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#7030A0">Character&gt;|&lt;Digit&gt;}</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>(no decimal point means Integer)<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>(decimal point means Float (Real) eg 0.0 or 1.5)<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span lang="EN-US" style="mso-ansi-language:EN-US">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span lang="EN-US" style="mso-ansi-language:EN-US">The six types are considered to be <i>primitives</i>. A primitive is not an object and has no methods of its own. All <i>primitives are immutable</i>.<o:p></o:p></span></p>
+    <p class="MsoNormal" style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:81.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:normal;
+mso-list:l0 level1 lfo1;tab-stops:list 36.0pt;vertical-align:middle">
+        <![if !supportLists]><span style="font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><span lang="EN-US" style="mso-ansi-language:EN-US">Boolean</span></a><span lang="EN-US" style="mso-ansi-language:EN-US"> — true or false</span><o:p></o:p></p>
+    <p class="MsoNormal" style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:81.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:normal;
+mso-list:l0 level1 lfo1;tab-stops:list 36.0pt;vertical-align:middle">
+        <![if !supportLists]><span style="font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/null"><span lang="EN-US" style="mso-ansi-language:EN-US">Null</span></a><span lang="EN-US" style="mso-ansi-language:EN-US"> — no value</span><o:p></o:p></p>
+    <p class="MsoNormal" style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:81.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:normal;
+mso-list:l0 level1 lfo1;tab-stops:list 36.0pt;vertical-align:middle">
+        <![if !supportLists]><span style="font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined"><span lang="EN-US" style="mso-ansi-language:EN-US">Undefined</span></a><span lang="EN-US" style="mso-ansi-language:EN-US"> — a declared variable but hasn’t been given a value</span><o:p></o:p></p>
+    <p class="MsoNormal" style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:81.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:normal;
+mso-list:l0 level1 lfo1;tab-stops:list 36.0pt;vertical-align:middle">
+        <![if !supportLists]><span style="font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"><span lang="EN-US" style="mso-ansi-language:EN-US">Number</span></a><span lang="EN-US" style="mso-ansi-language:EN-US"> — integers, floats, etc</span><o:p></o:p></p>
+    <p class="MsoNormal" style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:81.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:normal;
+mso-list:l0 level1 lfo1;tab-stops:list 36.0pt;vertical-align:middle">
+        <![if !supportLists]><span style="font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"><span lang="EN-US" style="mso-ansi-language:EN-US">String</span></a><span lang="EN-US" style="mso-ansi-language:EN-US"> — an array of characters i.e words</span><o:p></o:p></p>
+    <p class="MsoNormal" style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:81.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:normal;
+mso-list:l0 level1 lfo1;tab-stops:list 36.0pt;vertical-align:middle">
+        <![if !supportLists]><span style="font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><a href="https://hacks.mozilla.org/2015/06/es6-in-depth-symbols/"><span lang="EN-US" style="mso-ansi-language:EN-US">Symbol</span></a><span lang="EN-US" style="mso-ansi-language:EN-US"> — a unique value that&#39;s not equal to any other value</span><o:p></o:p></p>
+    <p>
+        <cite><span lang="EN-US" style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959;mso-ansi-language:EN-US">From &lt;<a href="https://codeburst.io/javascript-essentials-types-data-structures-3ac039f9877b">https://codeburst.io/javascript-essentials-types-data-structures-3ac039f9877b</a>&gt; </span></cite><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        DimStatement = var &lt;Identifier&gt; = &lt;DataType&gt;{var &lt;Identifier&gt; = &lt;DataType&gt;};<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp; </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter" xmlns:v="urn:schemas-microsoft-com:vml"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @0 1 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum 0 0 @1" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @2 1 2" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @3 21600 pixelWidth" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @3 21600 pixelHeight" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @0 0 1" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @6 1 2" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @7 21600 pixelWidth" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @8 21600 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @7 21600 pixelHeight" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @10 21600 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect" xmlns:v="urn:schemas-microsoft-com:vml"/>
+ <o:lock v:ext="edit" aspectratio="t" xmlns:o="urn:schemas-microsoft-com:office:office"/>
+</v:shapetype><v:shape id="Picture_x0020_82" o:spid="_x0000_i1047" type="#_x0000_t75"
+ alt="Machine generated alternative text:&#10;va r &#10;va r &#10;va r &#10;3.14 &#10;— &quot;John Doe&quot;; &#10;person &#10;— 'Yes I am!' ; &#10;answer "
+ style='width:175.5pt;height:52.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image001.png"
+  o:title="&#10;va r &#10;va r &#10;va r &#10;3" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+va r 
+va r 
+va r 
+3.14 
+— &quot;John Doe&quot;; 
+person 
+— 'Yes I am!' ; 
+answer " border="0" height="70" src="ml-JS/clip_image001.png" v:shapes="Picture_x0020_82" width="234" /><![endif]></span><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">JavaScript Variables</span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959"><a href="https://www.w3schools.com/js/js_variables.asp">https://www.w3schools.com/js/js_variables.asp</a></span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">Screen clipping taken: 8/10/2019 12:25 PM</span></cite><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Or if you want to read user inputs:<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_81" o:spid="_x0000_i1046" type="#_x0000_t75" alt="Machine generated alternative text:&#10;Nol &#10;d—t. getEl "
+ style='width:231.75pt;height:57pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image002.png"
+  o:title="&#10;Nol &#10;d—t" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+Nol 
+d—t. getEl " border="0" height="76" src="ml-JS/clip_image003.jpg" v:shapes="Picture_x0020_81" width="309" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Identifier</span></b><span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:red">(Identifiers are Variable names)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_80" o:spid="_x0000_i1045" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;letter &#10;letter &#10;( digit "
+ style='width:377.25pt;height:74.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image004.png"
+  o:title="&#10;&#10;letter &#10;letter &#10;( digit " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+letter 
+letter 
+( digit " border="0" height="99" src="ml-JS/clip_image005.jpg" v:shapes="Picture_x0020_80" width="503" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Concatenation: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        See <a href="onenote:#v2%20Planning%20steps&amp;section-id={2DF53702-D8C3-455A-9736-F62BCAF1F4C4}&amp;page-id={27B5C516-CFDF-420C-AF82-DD70E518F46A}&amp;object-id={5F6C7F9E-A36F-0DD1-0322-9C4D56E80DEF}&amp;E3&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Teacher%20Only/Lessons_Prep.one">above</a> for digit, character, special character &amp; identifier<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Text block = </span><b><span style="color:red">&quot;</span></b><span style="color:#7030A0"> &lt;string&gt; </span><b><span style="color:red">&quot;</span></b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Final statement </span><span style="color:red">=<span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:#7030A0">[&lt;Text block&gt; ]<span style="mso-spacerun:yes">&nbsp; </span>[</span><b><span style="color:red">+</span></b><span style="color:#7030A0"> {&lt;identifier&gt; | &lt;Text block&gt;}] </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <a href="onenote:#v2%20Planning%20steps&amp;section-id={2DF53702-D8C3-455A-9736-F62BCAF1F4C4}&amp;page-id={27B5C516-CFDF-420C-AF82-DD70E518F46A}&amp;object-id={2227989B-06A2-0715-3297-E60493B13A51}&amp;53&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Teacher%20Only/Lessons_Prep.one">Example below:</a><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_79" o:spid="_x0000_i1044" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:389.25pt;height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image006.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-JS/clip_image006.png" v:shapes="Picture_x0020_79" width="519" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Message (print to screen) statements: </span></b><span style="font-size:11.0pt;
+color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Message box </span><b><span style="font-family:&quot;Courier New&quot;;color:red">=</span></b><span style="color:
+red"><span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:#7030A0">alert </span><span style="color:red">( </span><span style="color:#7030A0">&lt;final statement&gt; </span><span style="color:red">)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Assignment:</span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;identifier&gt; </span><b><span style="font-family:&quot;Courier New&quot;;color:red">=</span></b><span style="color:
+red"><span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; {&lt;Text block&gt; | &lt;identifier&gt;}] </span><span style="font-family:&quot;Courier New&quot;;color:red">;</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:red">or<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;identifier&gt; </span><b><span style="font-family:&quot;Courier New&quot;;color:red">+=</span></b><span style="color:red"><span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; {&lt;Text block&gt; | &lt;identifier&gt;}] </span><span style="font-family:&quot;Courier New&quot;;
+color:red">;</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:red">Or any of these below:<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_78" o:spid="_x0000_i1043" type="#_x0000_t75" alt="JavaScript Assignment Operators &#10;Assignment operators assign values to JavaScript variables. &#10;Operator &#10;Example &#10;Same As &#10;x &#10;x &#10;x &#10;x &#10;x &#10;x &#10;x &#10;x &#10;x &#10;x "
+ style='width:387pt;height:382.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image007.png"
+  o:title="JavaScript Assignment Operators &#10;Assignment operators assign values to JavaScript variables" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="JavaScript Assignment Operators 
+Assignment operators assign values to JavaScript variables. 
+Operator 
+Example 
+Same As 
+x 
+x 
+x 
+x 
+x 
+x 
+x 
+x 
+x 
+x " border="0" height="510" src="ml-JS/clip_image008.jpg" v:shapes="Picture_x0020_78" width="516" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">JavaScript Assignment</span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959"><a href="https://www.w3schools.com/js/js_assignment.asp">https://www.w3schools.com/js/js_assignment.asp</a></span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">Screen clipping taken: 8/10/2019 2:19 PM</span></cite><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_77" o:spid="_x0000_i1042" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:316.5pt;height:24.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image009.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="33" src="ml-JS/clip_image009.png" v:shapes="Picture_x0020_77" width="422" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_76" o:spid="_x0000_i1041" type="#_x0000_t75" alt="Machine generated alternative text:&#10;swapped = false; &#10;cycle = &#10;cycle + I &#10;txtPasses = txtPasses &#10;&quot;Cycle &#10;cycle "
+ style='width:267.75pt;height:36pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image010.png"
+  o:title="&#10;swapped = false; &#10;cycle = &#10;cycle + I &#10;txtPasses = txtPasses &#10;&quot;Cycle &#10;cycle " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+swapped = false; 
+cycle = 
+cycle + I 
+txtPasses = txtPasses 
+&quot;Cycle 
+cycle " border="0" height="48" src="ml-JS/clip_image010.png" v:shapes="Picture_x0020_76" width="357" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_75" o:spid="_x0000_i1040" type="#_x0000_t75" alt="Machine generated alternative text:&#10;var x "
+ style='width:100.5pt;height:36pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image011.png"
+  o:title="&#10;var x " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+var x " border="0" height="48" src="ml-JS/clip_image011.png" v:shapes="Picture_x0020_75" width="134" /><![endif]></span><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">JavaScript Assignment</span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959"><a href="https://www.w3schools.com/js/js_assignment.asp">https://www.w3schools.com/js/js_assignment.asp</a></span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">Screen clipping taken: 8/10/2019 2:46 PM</span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#7030A0">&nbsp;</span></cite><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Condition </span></b><span style="color:#7030A0">(evaluates to </span><span style="color:red">true</span><span style="color:#7030A0"> or </span><span style="color:red">false</span><span style="color:#7030A0">)<b>: </b></span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;identifier&gt; </span><b><span style="color:red">==|===|&lt;|&gt; </span></b><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">And you could have:<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;condition&gt; =</span><span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;condition&gt; </span><b><span style="color:red">|| </span></b><span style="color:#7030A0">&lt;condition&gt; </span><span style="color:red">AND</span><span style="color:#7030A0"> &lt;condition&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">) </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:#7030A0">( </span><b><span style="color:red">||</span></b><span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;color:#7030A0"> means OR)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:red">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_74" o:spid="_x0000_i1039" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:343.5pt;height:14.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image012.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="19" src="ml-JS/clip_image012.png" v:shapes="Picture_x0020_74" width="458" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Statement - </span></b><span style="color:#7030A0">block of code to be executed<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_73" o:spid="_x0000_i1038" type="#_x0000_t75" alt="Machine generated alternative text:&#10;e ßlNT "
+ style='width:220.5pt;height:82.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image013.png"
+  o:title="&#10;e ßlNT " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+e ßlNT " border="0" height="110" src="ml-JS/clip_image014.jpg" v:shapes="Picture_x0020_73" width="294" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color: #7030A0; background: yellow; mso-highlight: yellow">&quot;IF&quot; statement:<span style="mso-spacerun:yes">&nbsp; </span></span></b><span style="color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_72" o:spid="_x0000_i1037" type="#_x0000_t75" alt="Machine generated alternative text:&#10;new Date() . getHours() &#10;var time &#10;if (time &lt; 10) { &#10;greeting &#10;&quot;Good morning&quot; &#10;} else if (time &lt; 20) { &#10;greeting &#10;} else { &#10;greeting &#10;&quot;Good day&quot; &#10;&quot;Good evening "
+ style='width:226.5pt;height:142.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image015.png"
+  o:title="&#10;new Date() " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+new Date() . getHours() 
+var time 
+if (time &lt; 10) { 
+greeting 
+&quot;Good morning&quot; 
+} else if (time &lt; 20) { 
+greeting 
+} else { 
+greeting 
+&quot;Good day&quot; 
+&quot;Good evening " border="0" height="190" src="ml-JS/clip_image015.png" v:shapes="Picture_x0020_72" width="302" /><![endif]></span><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">JavaScript if/else Statement</span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959"><a href="https://www.w3schools.com/jsref/jsref_if.asp">https://www.w3schools.com/jsref/jsref_if.asp</a></span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">Screen clipping taken: 8/10/2019 2:59 PM</span></cite><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p class="MsoNormal" style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:27.0pt;margin-bottom:.0001pt;text-indent:-27.0pt;mso-text-indent-alt:
+-18.0pt;line-height:normal;mso-list:l1 level1 lfo2;tab-stops:list 36.0pt;
+vertical-align:middle">
+        <![if !supportLists]><b><span style="mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin"><span style="mso-list:Ignore"><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp; </span>i.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b>Railroad - definitions for all languages<o:p></o:p></b></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_71" o:spid="_x0000_i1036" type="#_x0000_t75" alt="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「 &#10;く P 「 い C95 代 &#10;′ ・ つ 物 当 っ ー 物 ・ つ ・ J &#10;ノ つ テ つ ′ つ &#10;X 9 ョ ョ 0 つ 日 &gt; &#10;4 ! 6 ℃ "
+ style='width:336pt;height:576.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image016.png"
+  o:title="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「 &#10;く P 「 い C95 代 &#10;′ ・ つ 物 当 っ ー 物 ・ つ ・ J &#10;ノ つ テ つ ′ つ &#10;X 9 ョ ョ 0 つ 日 &gt; &#10;4 ! 6 ℃ " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「 
+く P 「 い C95 代 
+′ ・ つ 物 当 っ ー 物 ・ つ ・ J 
+ノ つ テ つ ′ つ 
+X 9 ョ ョ 0 つ 日 &gt; 
+4 ! 6 ℃ " border="0" height="769" src="ml-JS/clip_image016.png" v:shapes="Picture_x0020_71" width="448" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b>JavaScript (JS)</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">String:</span></b><span style="color:#7030A0"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_70" o:spid="_x0000_i1035" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:252.75pt;height:54pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image017.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="72" src="ml-JS/clip_image017.png" v:shapes="Picture_x0020_70" width="337" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Declaration of variables: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        Data Types - although there are <a href="onenote:#JS%20EBNF%20and%20Railroad&amp;section-id={7E9401E2-5B7A-441B-9F09-3CE478EEEBE8}&amp;page-id={ABF95920-D042-4FD7-8B04-2E895018F0D7}&amp;object-id={882AC874-CFEF-07B3-33CB-7BA637339CF2}&amp;28&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library/Code/CodeSamples/20Lotto.one"><span lang="EN-US" style="mso-ansi-language:EN-US">six types</span></a>, we will mainly need 3:<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_69" o:spid="_x0000_i1034" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;Data type "
+ style='width:263.25pt;height:98.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image018.png"
+  o:title="&#10;&#10;Data type " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+Data type " border="0" height="131" src="ml-JS/clip_image018.png" v:shapes="Picture_x0020_69" width="351" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        DimStatement=<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_68" o:spid="_x0000_i1033" type="#_x0000_t75" alt="Machine generated alternative text:&#10;0 "
+ style='width:412.5pt;height:198.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image019.png"
+  o:title="&#10;0 " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+0 " border="0" height="265" src="ml-JS/clip_image020.jpg" v:shapes="Picture_x0020_68" width="550" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Concatenation: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_67" o:spid="_x0000_i1032" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:364.5pt;height:162pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image021.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="216" src="ml-JS/clip_image021.png" v:shapes="Picture_x0020_67" width="486" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_66" o:spid="_x0000_i1031" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:389.25pt;height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image006.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-JS/clip_image006.png" v:shapes="Picture_x0020_66" width="519" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Message (print to screen) statements: </span></b><span style="font-size:11.0pt;
+color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_65" o:spid="_x0000_i1030" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:384pt;height:44.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image022.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="59" src="ml-JS/clip_image023.jpg" v:shapes="Picture_x0020_65" width="512" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Assignment:</span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#7030A0">See </span></b><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif"><a href="onenote:#JS%20EBNF%20and%20Railroad&amp;section-id={7E9401E2-5B7A-441B-9F09-3CE478EEEBE8}&amp;page-id={ABF95920-D042-4FD7-8B04-2E895018F0D7}&amp;object-id={72C8394B-8CC4-0B69-3A48-CEE821A0E786}&amp;57&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library/Code/CodeSamples/20Lotto.one">any of these</a><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_64" o:spid="_x0000_i1029" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:426.75pt;height:109.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image024.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="146" src="ml-JS/clip_image024.png" v:shapes="Picture_x0020_64" width="569" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_63" o:spid="_x0000_i1028" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:216.75pt;height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image025.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-JS/clip_image025.png" v:shapes="Picture_x0020_63" width="289" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_62" o:spid="_x0000_i1027" type="#_x0000_t75" alt="var x "
+ style='width:100.5pt;height:36pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image011.png"
+  o:title="var x " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="var x " border="0" height="48" src="ml-JS/clip_image011.png" v:shapes="Picture_x0020_62" width="134" /><![endif]></span><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">JavaScript Assignment</span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959"><a href="https://www.w3schools.com/js/js_assignment.asp">https://www.w3schools.com/js/js_assignment.asp</a></span></cite><o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">Screen clipping taken: 8/10/2019 2:46 PM</span></cite><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Condition </span></b><span style="color:#7030A0">(evaluates to </span><span style="color:red">true</span><span style="color:#7030A0"> or </span><span style="color:red">false</span><span style="color:#7030A0">)<b>: </b></span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;identifier&gt; </span><b><span style="color:red">==|===|&lt;|&gt; </span></b><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">And you could have:<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;condition&gt; =</span><span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;condition&gt; </span><b><span style="color:red">|| </span></b><span style="color:#7030A0">&lt;condition&gt; </span><span style="color:red">AND</span><span style="color:#7030A0"> &lt;condition&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">) </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:#7030A0">( </span><b><span style="color:red">||</span></b><span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;color:#7030A0"> means OR)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:red">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_61" o:spid="_x0000_i1026" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:343.5pt;height:14.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image012.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="19" src="ml-JS/clip_image012.png" v:shapes="Picture_x0020_61" width="458" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Statement - </span></b><span style="color:#7030A0">block of code to be executed<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_60" o:spid="_x0000_i1025" type="#_x0000_t75" alt="Machine generated alternative text:&#10;e ßlNT "
+ style='width:220.5pt;height:82.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-JS/clip_image013.png"
+  o:title="&#10;e ßlNT " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+e ßlNT " border="0" height="110" src="ml-JS/clip_image026.jpg" v:shapes="Picture_x0020_60" width="294" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color: #7030A0; background: yellow; mso-highlight: yellow">&quot;IF&quot; statement:<span style="mso-spacerun:yes">&nbsp; </span></span></b><span style="color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p class="MsoNormal">
+        <o:p>&nbsp;</o:p></p>
+
+</body>
+</html>

@@ -1,0 +1,620 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	}
+ p.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	}
+a:link
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;
+        }
+    </style>
+</head>
+<body>
+
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b><span style="font-size:24.0pt">Python - EBNF and Railroad<o:p></o:p></span></b></p>
+    <p class="MsoNormal">
+        <o:p>&nbsp;</o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b>Metalanguage description</b>s for the syntax <a href="onenote:..\..\SyllabusNotes\8.2-Development-Intro\8.2.2%20Solution%20Implementation.one#3%20If%20Statements%20in%203%20languages&amp;section-id={DD8D21CC-3B4A-4AB2-BFB2-DE6D7B5703A3}&amp;page-id={0E0C1548-50F5-4C8F-952A-60F5CFDC731B}&amp;end&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Syntax in 3 languages </a><o:p></o:p>
+    </p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        Definitions here: <a href="onenote:..\..\SyllabusNotes\8.2-Development-Intro\8.2.2%20Solution%20Implementation.one#EBNF%20%20Railroad&amp;section-id={DD8D21CC-3B4A-4AB2-BFB2-DE6D7B5703A3}&amp;page-id={B638DA19-A894-4178-8D30-D161F4C887FF}&amp;end&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">EBNF &amp; Railroad</a><o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        Syllabus definitions <a href="onenote:..\..\SyllabusNotes\SpecificationsDoc.one#PDF%20Specs%20Full&amp;section-id={92C227CA-1DCA-4847-8F6E-D6DBFE0820F1}&amp;page-id={A569A546-288B-4362-A5A1-64A0E39CAC6F}&amp;object-id={A9ABDD8F-1E2B-09D6-180F-D7E2BEC59213}&amp;6B&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Meta languages - EBNF:</a><span style="mso-spacerun:yes">&nbsp; </span><a href="onenote:..\..\SyllabusNotes\SpecificationsDoc.one#PDF%20Specs%20Full&amp;section-id={92C227CA-1DCA-4847-8F6E-D6DBFE0820F1}&amp;page-id={A569A546-288B-4362-A5A1-64A0E39CAC6F}&amp;object-id={A9ABDD8F-1E2B-09D6-180F-D7E2BEC59213}&amp;6F&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Railroad diagrams:</a><o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b>EBNF</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b>Python - definitions</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color: #303336; background: #EFF0F1">&lt;real number&gt;<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp; </span>::= &lt;sign&gt;&lt;natural number&gt; |<br />
+        <span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&lt;sign&gt;&lt;natural number&gt;</span><span style="color: #7D2727; background: #EFF0F1">&#39;.&#39;</span><span style="color: #303336; background: #EFF0F1">&lt;digit sequence&gt; |<br />
+        <span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&lt;sign&gt;</span><span style="color: #7D2727; background: #EFF0F1">&#39;.&#39;</span><span style="color: #303336; background: #EFF0F1">&lt;digit&gt;&lt;digit sequence&gt; |<br />
+        <span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&lt;sign&gt;&lt;real number&gt;</span><span style="color: #7D2727; background: #EFF0F1">&#39;e&#39;</span><span style="color: #303336; background: #EFF0F1">&lt;natural number&gt;<br />
+        &lt;sign&gt;<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>::= ‘’ | ‘+’ | ‘-‘<br />
+        &lt;natural number&gt; ::= ‘</span><span style="color: #7D2727; background: #EFF0F1">0</span><span style="color: #303336; background: #EFF0F1">’ | &lt;nonzero digit&gt;&lt;digit sequence&gt;<br />
+        &lt;nonzero digit&gt;<span style="mso-spacerun:yes">&nbsp; </span>::= </span><span style="color: #7D2727; background: #EFF0F1">1</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">2</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">3</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">4</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">5</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">6</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">7</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">8</span><span style="color: #303336; background: #EFF0F1"> 
+        | </span><span style="color: #7D2727; background: #EFF0F1">9</span><span style="color: #303336; background: #EFF0F1"><br />
+        &lt;digit sequence&gt; ::= ‘’ | &lt;digit&gt;&lt;digit sequence&gt;<br />
+        &lt;digit&gt;<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>::= </span><span style="color: #7D2727; background: #EFF0F1">0</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">1</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">2</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">3</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">4</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">5</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">6</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">7</span><span style="color: #303336; background: #EFF0F1"> 
+        | </span><span style="color: #7D2727; background: #EFF0F1">8</span><span style="color: #303336; background: #EFF0F1"> | </span><span style="color: #7D2727; background: #EFF0F1">9</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">From &lt;<a href="https://stackoverflow.com/questions/14013792/how-to-implement-backus-naur-form-in-python">https://stackoverflow.com/questions/14013792/how-to-implement-backus-naur-form-in-python</a>&gt; </span></cite><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        letter <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &quot;A&quot; | &quot;B&quot; | &quot;C&quot; | &quot;D&quot; | &quot;E&quot; | &quot;F&quot; | &quot;G&quot; | &quot;H&quot; | &quot;I&quot; | &quot;J&quot; | &quot;K&quot; | &quot;L&quot; | &quot;M&quot; | &quot;N&quot; | &quot;O&quot; | &quot;P&quot; | &quot;Q&quot; | &quot;R&quot; | &quot;S&quot; | &quot;T&quot; | &quot;U&quot; | &quot;V&quot; | &quot;W&quot; | &quot;X&quot; | &quot;Y&quot; | &quot;Z&quot; | &quot;a&quot; | &quot;b&quot; | &quot;c&quot; | &quot;d&quot; | &quot;e&quot; | &quot;f&quot; | &quot;g&quot; | &quot;h&quot; | &quot;i&quot; | &quot;j&quot; | &quot;k&quot; | &quot;l&quot; | &quot;m&quot; | &quot;n&quot; | &quot;o&quot; | &quot;p&quot; | &quot;q&quot; | &quot;r&quot; | &quot;s&quot; | &quot;t&quot; | &quot;u&quot; | &quot;v&quot; | &quot;w&quot; | &quot;x&quot; | &quot;y&quot; | &quot;z&quot; <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        special character&nbsp;(including &quot;space&quot;)<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &quot; &quot; | &quot;*&quot; | &quot;/&quot; | &quot;=&quot; |&nbsp;&quot;&lt;&quot; |&nbsp;&quot;&gt;&quot; |&nbsp;&quot;[&quot; |&nbsp;&quot;]&quot; |&nbsp;&quot;.&quot; |&nbsp;&quot;,&quot; |&nbsp;&quot;(&quot;&nbsp;| &quot;)&quot; |&nbsp;&quot;:&quot; |&nbsp;&quot;^&quot; |&nbsp;&quot;@&quot;&nbsp;| &quot;{&quot;&nbsp;| &quot;}&quot; |&nbsp;&quot;$&quot; |&nbsp;&quot;#&quot; |&nbsp;&quot;&amp;&quot; |&nbsp;&quot;%&quot; <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        string-character <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        any character or digit except quote | &quot;&#39;&#39;&quot; <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        string <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        &lt;string-character &gt; { &lt;string-character &gt; } <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        identifier<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:red">(Identifiers are Variable names)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        letter { letter | digit<span style="mso-spacerun:yes">&nbsp; </span>} <o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Declaration of variables: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#242729">There is no such thing as &quot;variable declaration&quot; or &quot;variable initialization&quot; in Python.</span></b><span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#242729"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#242729">There is simply what we call &quot;assignment&quot;, but should probably just call &quot;naming&quot;.<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#242729">Assignment means &quot;this name on the left-hand side now refers to the result of evaluating the right-hand side, regardless of what it referred to before (if anything)&quot;.<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:81.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #303336; background: #EFF0F1">foo = </span><span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #7D2727; background: #EFF0F1">&#39;bar&#39; </span><span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #828990; background: #EFF0F1"># the name &#39;foo&#39; is now a name for the string &#39;bar&#39;</span><span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #303336; background: #EFF0F1"><br />
+        foo = </span><span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #7D2727; background: #EFF0F1">2</span><span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #303336; background: #EFF0F1"> * </span><span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #7D2727; background: #EFF0F1">3 </span><span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #828990; background: #EFF0F1"># the name &#39;foo&#39; stops being a name for the string &#39;bar&#39;,</span><span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #303336; background: #EFF0F1"><br />
+        </span><span style="font-size: 11.5pt; font-family: &quot;Arial&quot;,sans-serif; color: #828990; background: #EFF0F1"># and starts being a name for the integer 6, resulting from the multiplication</span><span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#242729">As such, Python&#39;s names (a better term than &quot;variables&quot;, arguably) don&#39;t have associated types; the values do. You can re-apply the same name to anything regardless of its type, but the thing still has behaviour that&#39;s dependent upon its type. The name is simply a way to refer to the value (object). This answers your second question: You <b>don&#39;t</b> create variables to hold a custom type. You don&#39;t create variables to hold any particular type. You don&#39;t &quot;create&quot; variables at all. You give names to objects.<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#242729">Second point: Python follows a very simple rule when it comes to classes, that is actually much more consistent than what languages like Java, C++ and C# do: <b>everything declared inside the </b></span><b><span style="font-size: 10.0pt; font-family: Consolas; color: #242729; background: #EFF0F1">class</span><span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#242729"> block is part of the class</span></b><span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#242729">. So, functions (</span><span style="font-size: 10.0pt; font-family: Consolas; color: #242729; background: #EFF0F1">def</span><span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#242729">) written here are methods, i.e. part of the class object (not stored on a per-instance basis), just like in Java, C++ and C#; but other names here are <b>also</b> part of the class. Again, the names are just names, and they don&#39;t have associated types, and <b>functions are objects too</b> in Python.</span><span style="color:#242729"><o:p></o:p></span></p>
+    <p>
+        <cite><span style="font-size:9.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#595959">From &lt;<a href="https://stackoverflow.com/questions/11007627/python-variable-declaration">https://stackoverflow.com/questions/11007627/python-variable-declaration</a>&gt; </span></cite><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Concatenation: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Text block = </span><b><span style="color:red">&quot;</span></b><span style="color:#7030A0"> &lt;string&gt; </span><b><span style="color:red">&quot;</span></b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Final statement </span><span style="color:red">=<span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:#7030A0">[&lt;Text block&gt; ]<span style="mso-spacerun:yes">&nbsp; </span>[</span><b><span style="color:red">+</span></b><span style="color:#7030A0"> {&lt;identifier&gt; | &lt;Text block&gt;}] </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <a href="onenote:#v2%20Planning%20steps&amp;section-id={2DF53702-D8C3-455A-9736-F62BCAF1F4C4}&amp;page-id={27B5C516-CFDF-420C-AF82-DD70E518F46A}&amp;object-id={2227989B-06A2-0715-3297-E60493B13A51}&amp;53&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Teacher%20Only/Lessons_Prep.one">Example below:</a><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter" xmlns:v="urn:schemas-microsoft-com:vml"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @0 1 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum 0 0 @1" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @2 1 2" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @3 21600 pixelWidth" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @3 21600 pixelHeight" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @0 0 1" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @6 1 2" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @7 21600 pixelWidth" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @8 21600 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="prod @7 21600 pixelHeight" xmlns:v="urn:schemas-microsoft-com:vml"/>
+  <v:f eqn="sum @10 21600 0" xmlns:v="urn:schemas-microsoft-com:vml"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect" xmlns:v="urn:schemas-microsoft-com:vml"/>
+ <o:lock v:ext="edit" aspectratio="t" xmlns:o="urn:schemas-microsoft-com:office:office"/>
+</v:shapetype><v:shape id="Picture_x0020_39" o:spid="_x0000_i1040" type="#_x0000_t75"
+ alt="Machine generated alternative text:&#10;&#10;" style='width:389.25pt;
+ height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image001.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-Py/clip_image001.png" v:shapes="Picture_x0020_39" width="519" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Message (print to screen) statements: </span></b><span style="font-size:11.0pt;
+color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Text block = </span><b><span style="color:red">&quot;</span></b><span style="color:#7030A0"> &lt;string&gt; </span><b><span style="color:red">&quot;</span></b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">Final statement </span><span style="color:red">= print( </span><span style="color:#7030A0">[&lt;Text block&gt; ]<span style="mso-spacerun:yes">&nbsp; </span>[</span><b><span style="color:red">,</span></b><span style="color:#7030A0"> {&lt;identifier&gt; | &lt;Text block&gt;}]</span><span style="color:red"> )</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_38" o:spid="_x0000_i1039" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:400.5pt;height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image002.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-Py/clip_image002.png" v:shapes="Picture_x0020_38" width="534" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Assignment:</span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;identifier&gt; </span><span style="color:red">=<span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; {&lt;Text block&gt; | &lt;identifier&gt;}] </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:red">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_37" o:spid="_x0000_i1038" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:216.75pt;height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image003.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-Py/clip_image003.png" v:shapes="Picture_x0020_37" width="289" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Condition </span></b><span style="color:#7030A0">(evaluates to </span><span style="color:red">true</span><span style="color:#7030A0"> or </span><span style="color:red">false</span><span style="color:#7030A0">)<b>: </b></span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;identifier&gt; </span><b><span style="color:red">==|===|&lt;|&gt; </span></b><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">And you could have:<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;condition&gt; =</span><span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;condition&gt; </span><b><span style="color:red">|| </span></b><span style="color:#7030A0">&lt;condition&gt; </span><span style="color:red">AND</span><span style="color:#7030A0"> &lt;condition&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">) </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:#7030A0">( </span><b><span style="color:red">||</span></b><span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;color:#7030A0"> means OR)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:red">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_36" o:spid="_x0000_i1037" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:343.5pt;height:14.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image004.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="19" src="ml-Py/clip_image004.png" v:shapes="Picture_x0020_36" width="458" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Statement - </span></b><span style="color:#7030A0">block of code to be executed<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_35" o:spid="_x0000_i1036" type="#_x0000_t75" alt="Machine generated alternative text:&#10;e ßlNT "
+ style='width:220.5pt;height:82.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image005.png"
+  o:title="&#10;e ßlNT " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+e ßlNT " border="0" height="110" src="ml-Py/clip_image006.jpg" v:shapes="Picture_x0020_35" width="294" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color: #7030A0; background: yellow; mso-highlight: yellow">&quot;IF&quot; statement:<span style="mso-spacerun:yes">&nbsp; </span></span></b><span style="color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin:0cm;margin-bottom:.0001pt">
+        <b>Railroad </b><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b>Definitions</b><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_34" o:spid="_x0000_i1035" type="#_x0000_t75" alt="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「 &#10;く P 「 い C95 代 &#10;′ ・ つ 物 当 っ ー 物 ・ つ ・ J &#10;ノ つ テ つ ′ つ &#10;X 9 ョ ョ 0 つ 日 &gt; &#10;4 ! 6 ℃ "
+ style='width:336pt;height:576.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image007.png"
+  o:title="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「 &#10;く P 「 い C95 代 &#10;′ ・ つ 物 当 っ ー 物 ・ つ ・ J &#10;ノ つ テ つ ′ つ &#10;X 9 ョ ョ 0 つ 日 &gt; &#10;4 ! 6 ℃ " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「 
+く P 「 い C95 代 
+′ ・ つ 物 当 っ ー 物 ・ つ ・ J 
+ノ つ テ つ ′ つ 
+X 9 ョ ョ 0 つ 日 &gt; 
+4 ! 6 ℃ " border="0" height="769" src="ml-Py/clip_image007.png" v:shapes="Picture_x0020_34" width="448" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">String:</span></b><span style="color:#7030A0"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_33" o:spid="_x0000_i1034" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:252.75pt;height:54pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image008.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="72" src="ml-Py/clip_image008.png" v:shapes="Picture_x0020_33" width="337" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Identifier</span></b><span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:red">(Identifiers are Variable names)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_32" o:spid="_x0000_i1033" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;letter &#10;letter &#10;( digit "
+ style='width:377.25pt;height:74.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image009.png"
+  o:title="&#10;&#10;letter &#10;letter &#10;( digit " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+letter 
+letter 
+( digit " border="0" height="99" src="ml-Py/clip_image010.jpg" v:shapes="Picture_x0020_32" width="503" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Declaration of variables: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">See: </span><a href="onenote:#Python%20EBNF%20and%20Railroad%20&amp;section-id={7E9401E2-5B7A-441B-9F09-3CE478EEEBE8}&amp;page-id={47A79A42-4C42-4E72-8448-7A9A74122C4B}&amp;object-id={EAD623AB-C022-02A0-268A-3429F7C989DC}&amp;27&amp;base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library/Code/CodeSamples/20Lotto.one"><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">Declaration of variables: </span></a><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Concatenation: </span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_31" o:spid="_x0000_i1032" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:405pt;height:168.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image011.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="225" src="ml-Py/clip_image011.png" v:shapes="Picture_x0020_31" width="540" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_30" o:spid="_x0000_i1031" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:400.5pt;height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image002.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-Py/clip_image002.png" v:shapes="Picture_x0020_30" width="534" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Message (print to screen) statements: </span></b><span style="font-size:11.0pt;
+color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_29" o:spid="_x0000_i1030" type="#_x0000_t75" alt="Machine generated alternative text:&#10;4 "
+ style='width:404.25pt;height:46.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image012.png"
+  o:title="&#10;4 " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+4 " border="0" height="62" src="ml-Py/clip_image013.jpg" v:shapes="Picture_x0020_29" width="539" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_28" o:spid="_x0000_i1029" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:400.5pt;height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image002.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-Py/clip_image002.png" v:shapes="Picture_x0020_28" width="534" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="font-size:11.0pt;color:#7030A0">Assignment:</span></b><span style="font-size:11.0pt;color:#7030A0"><o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_27" o:spid="_x0000_i1028" type="#_x0000_t75" alt="' top "
+ style='width:389.25pt;height:86.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image014.png"
+  o:title="' top " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="' top " border="0" height="115" src="ml-Py/clip_image014.png" v:shapes="Picture_x0020_27" width="519" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_26" o:spid="_x0000_i1027" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:216.75pt;height:12.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image003.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="17" src="ml-Py/clip_image003.png" v:shapes="Picture_x0020_26" width="289" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Condition </span></b><span style="color:#7030A0">(evaluates to </span><span style="color:red">true</span><span style="color:#7030A0"> or </span><span style="color:red">false</span><span style="color:#7030A0">)<b>: </b></span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;identifier&gt; </span><b><span style="color:red">==|===|&lt;|&gt; </span></b><span style="color:#7030A0">&lt;Text block&gt; | &lt;identifier&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">And you could have:<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&lt;condition&gt; =</span><span style="font-family:&quot;Courier New&quot;;color:red">(</span><span style="color:#7030A0">&lt;condition&gt; </span><b><span style="color:red">|| </span></b><span style="color:#7030A0">&lt;condition&gt; </span><span style="color:red">AND</span><span style="color:#7030A0"> &lt;condition&gt; </span><span style="font-family:&quot;Courier New&quot;;color:red">) </span><o:p></o:p>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:#7030A0">( </span><b><span style="color:red">||</span></b><span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;color:#7030A0"> means OR)</span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Courier New&quot;;
+color:red">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_25" o:spid="_x0000_i1026" type="#_x0000_t75" alt="Machine generated alternative text:&#10;&#10;"
+ style='width:343.5pt;height:14.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image004.png"
+  o:title="&#10;&#10;" xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+
+" border="0" height="19" src="ml-Py/clip_image004.png" v:shapes="Picture_x0020_25" width="458" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color:#7030A0">Statement - </span></b><span style="color:#7030A0">block of code to be executed<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_24" o:spid="_x0000_i1025" type="#_x0000_t75" alt="Machine generated alternative text:&#10;e ßlNT "
+ style='width:220.5pt;height:82.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="ml-Py/clip_image005.png"
+  o:title="&#10;e ßlNT " xmlns:v="urn:schemas-microsoft-com:vml"/>
+</v:shape><![endif]--><![if !vml]>
+        <img alt="Machine generated alternative text:
+e ßlNT " border="0" height="110" src="ml-Py/clip_image015.jpg" v:shapes="Picture_x0020_24" width="294" /><![endif]></span><o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <b><span style="color: #7030A0; background: yellow; mso-highlight: yellow">&quot;IF&quot; statement:<span style="mso-spacerun:yes">&nbsp; </span></span></b><span style="color:#7030A0"><o:p></o:p></span>
+    </p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#242729">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:27.0pt;
+margin-bottom:.0001pt">
+        &nbsp;<o:p></o:p></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;
+color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:54.0pt;
+margin-bottom:.0001pt">
+        <span style="color:#7030A0">&nbsp;<o:p></o:p></span></p>
+    <p class="MsoNormal">
+        <o:p>&nbsp;</o:p></p>
+
+</body>
+</html>
