@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Metalanguage description</strong>s  for the syntax <a href="onenote:..\..\SyllabusNotes\8.2-Development-Intro\8.2.2%20Solution%20Implementation.one#3%20If%20Statements%20in%203%20languages&section-id={DD8D21CC-3B4A-4AB2-BFB2-DE6D7B5703A3}&page-id={0E0C1548-50F5-4C8F-952A-60F5CFDC731B}&end&base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Syntax  in 3 languages </a><br>
+  Definitions here: <a href="onenote:..\..\SyllabusNotes\8.2-Development-Intro\8.2.2%20Solution%20Implementation.one#EBNF%20%20Railroad&section-id={DD8D21CC-3B4A-4AB2-BFB2-DE6D7B5703A3}&page-id={B638DA19-A894-4178-8D30-D161F4C887FF}&end&base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">EBNF  &amp; Railroad</a><br>
+  Syllabus definitions <a href="onenote:..\..\SyllabusNotes\SpecificationsDoc.one#PDF%20Specs%20Full&section-id={92C227CA-1DCA-4847-8F6E-D6DBFE0820F1}&page-id={A569A546-288B-4362-A5A1-64A0E39CAC6F}&object-id={A9ABDD8F-1E2B-09D6-180F-D7E2BEC59213}&6B&base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Meta  languages - EBNF:</a>  <a href="onenote:..\..\SyllabusNotes\SpecificationsDoc.one#PDF%20Specs%20Full&section-id={92C227CA-1DCA-4847-8F6E-D6DBFE0820F1}&page-id={A569A546-288B-4362-A5A1-64A0E39CAC6F}&object-id={A9ABDD8F-1E2B-09D6-180F-D7E2BEC59213}&6F&base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library">Railroad  diagrams:</a></p>
+<p>&nbsp;</p>
+<p><strong>EBNF</strong><br>
+  <strong>Pascal - definitions:</strong><br>
+  sign <br>
+  &quot;+&quot; | &quot;-&quot; </p>
+<p>letter <br>
+  &quot;A&quot; | &quot;B&quot; | &quot;C&quot; |  &quot;D&quot; | &quot;E&quot; | &quot;F&quot; | &quot;G&quot; | &quot;H&quot; |  &quot;I&quot; | &quot;J&quot; | &quot;K&quot; | &quot;L&quot; | &quot;M&quot; |  &quot;N&quot; | &quot;O&quot; | &quot;P&quot; | &quot;Q&quot; | &quot;R&quot; |  &quot;S&quot; | &quot;T&quot; | &quot;U&quot; | &quot;V&quot; | &quot;W&quot; |  &quot;X&quot; | &quot;Y&quot; | &quot;Z&quot; | &quot;a&quot; | &quot;b&quot; |  &quot;c&quot; | &quot;d&quot; | &quot;e&quot; | &quot;f&quot; | &quot;g&quot; |  &quot;h&quot; | &quot;i&quot; | &quot;j&quot; | &quot;k&quot; | &quot;l&quot; |  &quot;m&quot; | &quot;n&quot; | &quot;o&quot; | &quot;p&quot; | &quot;q&quot; |  &quot;r&quot; | &quot;s&quot; | &quot;t&quot; | &quot;u&quot; | &quot;v&quot; |  &quot;w&quot; | &quot;x&quot; | &quot;y&quot; | &quot;z&quot; </p>
+<p>digit <br>
+  &quot;0&quot; | &quot;1&quot; | &quot;2&quot; |  &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; |  &quot;8&quot; | &quot;9&quot; </p>
+<p>special character&nbsp;(including &quot;space&quot;)<br>
+  &quot; &quot; | &quot;*&quot; | &quot;/&quot; |  &quot;=&quot; |&nbsp;&quot;&lt;&quot; |&nbsp;&quot;&gt;&quot;  |&nbsp;&quot;[&quot; |&nbsp;&quot;]&quot; |&nbsp;&quot;.&quot;  |&nbsp;&quot;,&quot; |&nbsp;&quot;(&quot;&nbsp;| &quot;)&quot; |&nbsp;&quot;:&quot;  |&nbsp;&quot;^&quot; |&nbsp;&quot;@&quot;&nbsp;| &quot;{&quot;&nbsp;|  &quot;}&quot; |&nbsp;&quot;$&quot; |&nbsp;&quot;#&quot;  |&nbsp;&quot;&amp;&quot; |&nbsp;&quot;%&quot; </p>
+<p>string-character <br>
+  any character or digit except quote | &quot;''&quot; </p>
+<p>string <br>
+  &lt;<a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#string-character">string-character</a>&gt;  { &lt;special character&gt; | &lt;<a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#string-character">string-character</a>&gt;  } </p>
+<p>identifier                                                     (Identifiers are Variable names)<br>
+  <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#letter">letter</a> { <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#letter">letter</a> | <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#digit">digit</a> } <br>
+  From &lt;<a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html">http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html</a>&gt; </p>
+<p><strong>Declaration  of variables: </strong> <br>
+  dataType = Integer|SmallInt| LongInt | Real| Single|  Currency| Boolean | Char | String<br>
+  DimStatement = var &lt;identifier&gt; { ,  &lt;identifier&gt;} : &lt;DataType&gt; ;<br>
+  <img border="0" width="390" height="31" src="pascal_clip_image001.png" alt="Machine generated alternative text:  "></p>
+<p>&nbsp;</p>
+<p><strong>Concatenation: </strong> <br>
+  Text block = <strong>&quot;</strong> &lt;string&gt; <strong>&quot;</strong><br>
+  Final statement =  [&lt;Text block&gt; ]   [<strong>+</strong> {&lt;identifier&gt; | &lt;Text block&gt;}] </p>
+<p><a href="onenote:06Calculations.one#V2%20Planning%20steps%20for%20%22Add%203%20numbers%22&section-id={334CCC13-6611-4AB9-BFBB-6726DC20DC62}&page-id={BC0DD29C-A918-4F1C-AD90-AF08305B1669}&object-id={142830A6-C9B4-05D9-3A76-62804A07CC71}&7F&base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Content%20Library/Code/CodeSamples">String  concatenation is &quot;+&quot;. </a><br>
+  <img border="0" width="518" height="17" src="pascal_clip_image002.png" alt="Machine generated alternative text:  "></p>
+<p><img border="0" width="601" height="15" src="pascal_clip_image004.jpg"></p>
+<p><strong>Message  (print to screen) statements: </strong> <br>
+  Text block =<strong> '</strong> &lt;string&gt;<strong> '</strong><br>
+  Final statement = writeln<strong>(</strong> [&lt;Text block&gt;  ]  [<strong>,</strong> {&lt;identifier&gt; | &lt;Text block&gt;]} <strong>);</strong></p>
+<p><a href="onenote:#v2%20Planning%20steps&section-id={2DF53702-D8C3-455A-9736-F62BCAF1F4C4}&page-id={27B5C516-CFDF-420C-AF82-DD70E518F46A}&object-id={48D0DB9C-8247-0673-3AA3-DB6C1672FAC5}&BA&base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Teacher%20Only/Lessons_Prep.one">Example  from below</a><br>
+  <img border="0" width="576" height="17" src="pascal_clip_image005.png" alt="Machine generated alternative text:  "></p>
+<p><a href="onenote:#v2%20Planning%20steps&section-id={2DF53702-D8C3-455A-9736-F62BCAF1F4C4}&page-id={27B5C516-CFDF-420C-AF82-DD70E518F46A}&object-id={95BEABBF-FC09-04C3-215D-D2DC3BBA8C85}&3F&base-path=https://schoolsnsw.sharepoint.com/sites/SDD/SiteAssets/SDD%20Notebook/_Teacher%20Only/Lessons_Prep.one">String  concatenation is &quot;+&quot;.</a><br>
+  Final statement = (  [&lt;Text block&gt; ]  [<strong>+</strong> {&lt;Text  block&gt;}] );</p>
+<p><strong>Assignment:</strong></p>
+<p>&lt;identifier&gt; <strong>:=</strong>  &lt;Text block&gt; | &lt;identifier&gt; {&lt;Text  block&gt; | &lt;identifier&gt;}] ;</p>
+<p><img border="0" width="126" height="16" src="pascal_clip_image006.png"><br>
+  <img border="0" width="236" height="16" src="pascal_clip_image007.png"></p>
+<p><strong>Condition </strong>(evaluates to true or false)<strong>: </strong></p>
+<p>(&lt;identifier&gt; <strong>==|===|&lt;|&gt; </strong>&lt;Text block&gt; | &lt;identifier&gt; )<br>
+  And you could have:<br>
+  &lt;condition&gt; =(&lt;condition&gt; <strong>|| </strong>&lt;condition&gt;  AND  &lt;condition&gt; ) <br>
+  ( <strong>||</strong> means OR)</p>
+<p><img border="0" width="458" height="19" src="pascal_clip_image008.png" alt="Machine generated alternative text:  "></p>
+<p><strong>Statement - </strong>block of code to be executed</p>
+<p>[ <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#label">label</a> &quot;:&quot; ] (<a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#simple-statement">simple-statement</a> | <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#structured-statement">structured-statement</a>) </p>
+<p>simple-statement <br>
+  [ <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#assignment-statement">assignment-statement</a> | <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#procedure-statement">procedure-statement</a> | <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#goto-statement">goto-statement</a> ] </p>
+<p>structured-statement <br>
+  <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#compound-statement">compound-statement</a> | <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#repetitive-statement">repetitive-statement</a> | <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#conditional-statement">conditional-statement</a> | <a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html#with-statement">with-statement </a></p>
+<p>From &lt;<a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html">http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html</a>&gt; </p>
+<p>&nbsp;</p>
+<p>From &lt;<a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html">http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html</a>&gt; </p>
+<p>&nbsp;</p>
+<p>From &lt;<a href="http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html">http://www.fit.vutbr.cz/study/courses/APR/public/ebnf.html</a>&gt; </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;IF&quot; statement:  </strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Railroad:</strong><br>
+  <strong>Definitions</strong><br>
+  <img border="0" width="448" height="769" src="pascal_clip_image009.png" alt="N 人 X ^ C ↓ 0 日 0 Z 1 ) 「  く P 「 い C95 代  ′ ・ つ 物 当 っ ー 物 ・ つ ・ J  ノ つ テ つ ′ つ  X 9 ョ ョ 0 つ 日 >  4 ! 6 ℃ "><br>
+  <br>
+  <strong>String:</strong> <br>
+  <img border="0" width="510" height="73" src="pascal_clip_image011.jpg" alt="Machine generated alternative text:  - ( string  starters "></p>
+<p>&nbsp;</p>
+<p><strong>Identifier:</strong>                                                     (Identifiers are Variable names)<br>
+  <img border="0" width="503" height="99" src="pascal_clip_image013.jpg" alt="Machine generated alternative text:  letter  letter  ( digit "></p>
+<p><strong>Declaration  of variables: </strong> <br>
+  <img border="0" width="326" height="352" src="pascal_clip_image014.png" alt="Machine generated alternative text: 'lea "></p>
+<p><img border="0" width="487" height="125" src="pascal_clip_image016.jpg" alt="Machine generated alternative text:  "><br>
+  <img border="0" width="509" height="40" src="pascal_clip_image017.jpg" alt="Machine generated alternative text:  "></p>
+<p>&nbsp;</p>
+<p><strong>Concatenation  - either:</strong> <br>
+  <img border="0" width="540" height="225" src="pascal_clip_image018.png" alt="Machine generated alternative text:  "><br>
+  <strong>Or</strong> <br>
+  <img border="0" width="486" height="216" src="pascal_clip_image019.png" alt="Machine generated alternative text:  "></p>
+<p><img border="0" width="518" height="17" src="pascal_clip_image002_0000.png" alt="Machine generated alternative text:  "><br>
+  <strong>(Note that data types must be the same)</strong><br>
+  <img border="0" width="601" height="15" src="pascal_clip_image020.jpg"></p>
+<p><strong>Message  (print to screen) statements: </strong> <br>
+  <img border="0" width="575" height="72" src="pascal_clip_image022.jpg" alt="Machine generated alternative text:  "></p>
+<p><img border="0" width="576" height="17" src="pascal_clip_image005_0000.png" alt="Machine generated alternative text:  "></p>
+<p><strong>Assignment</strong> <br>
+  <img border="0" width="518" height="115" src="pascal_clip_image023.png" alt="' top "><br>
+  <strong>Condition </strong>(evaluates to true or false)<strong>: </strong></p>
+<p>(&lt;identifier&gt; <strong>==|===|&lt;|&gt; </strong>&lt;Text block&gt; | &lt;identifier&gt; )<br>
+  And you could have:<br>
+  &lt;condition&gt; =(&lt;condition&gt; <strong>|| </strong>&lt;condition&gt;  AND  &lt;condition&gt; ) <br>
+  ( <strong>||</strong> means OR)</p>
+<p><img border="0" width="458" height="19" src="pascal_clip_image008_0000.png" alt="Machine generated alternative text:  "></p>
+<p>&nbsp;</p>
+<p><strong>Statement - </strong>block of code to be executed<br>
+  <img border="0" width="294" height="110" src="pascal_clip_image025.jpg" alt="Machine generated alternative text: e ßlNT "></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&quot;IF&quot; statement:  </strong></p>
+<p>&nbsp;</p>
+<p><img border="0" width="601" height="93" src="pascal_clip_image027.jpg" alt="Machine generated alternative text: else "></p>
+</body>
+</html>
